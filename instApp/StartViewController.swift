@@ -8,13 +8,10 @@
 import UIKit
 
 class StartViewController: UIViewController {
-    
-    @IBOutlet weak var blurEffect: UIVisualEffectView!
-    @IBOutlet weak var backView: UIImageView!
+
     
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
@@ -23,16 +20,15 @@ class StartViewController: UIViewController {
 
         loginTextField.delegate = self
         passwordTextField.delegate = self
-
         registerForKeyboardNotifications()
         
     }
     
-    
-    @IBAction func goToApp(_ sender: UIButton) {
-        
+
+    @IBAction func loginButton(_ sender: UIButton) {
         
     }
+    
     
     
     private func registerForKeyboardNotifications() {
@@ -48,7 +44,7 @@ class StartViewController: UIViewController {
         if notification.name == UIResponder.keyboardWillHideNotification {
             bottomConstraint.constant = 0
         } else {
-            bottomConstraint.constant = keyboardScreenEndFrame.height + 10
+            bottomConstraint.constant = keyboardScreenEndFrame.height
         }
         
         view.needsUpdateConstraints()
@@ -66,4 +62,7 @@ extension StartViewController: UITextFieldDelegate{
         self.passwordTextField.resignFirstResponder()
         return true
     }
+
 }
+
+
